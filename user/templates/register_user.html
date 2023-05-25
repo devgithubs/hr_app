@@ -1,0 +1,15 @@
+<h1>Welcome {{user|title}}</h1>
+<h4>User ID: {{user.id }}</h4>
+<h4>User Email: {{user.email }}</h4>
+
+{% if user.is_superuser %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a name="" id="" class="btn btn-primary" href="{% url 'home' %}" role="button">Return Home</a>
+  </form>
+{% else %}
+  <h1>{{user|title}}, this page is for people with Superuser privilege.</h1>
+  <a name="" id="" class="btn btn-primary" href="{% url 'home' %}" role="button">Return Home</a>
+{% endif %}
